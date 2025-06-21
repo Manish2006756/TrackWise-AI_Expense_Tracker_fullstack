@@ -22,7 +22,7 @@ TrackWise is a clean and simple web app to track your daily expenses and visuali
 - GitHub Pages (for hosting)
 
 ## 📷 Screenshot
-![screenshot](screenshot.png)
+![screenshot](screenshot2.png)
 
 ## 📁 How to Use
 
