@@ -27,19 +27,6 @@ TrackWise is a full-stack expense tracking application that helps users manage t
 * 📱 Responsive user interface
 
 ---
-Screenshots
-Login & Registration:
-<img width="1920" height="970" alt="Screenshot 2026-08-20 013639" src="https://github.com/user-attachments/assets/17a8bfb5-612b-47d2-9674-e341d0bd6e3e" />
-Dashboard:
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/70773144-3ca5-4b51-9e1d-001e63aabfc4" />
-Expense Analytics:
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5b7de8e6-00f5-4c13-838b-abbb5e295ed4" />
-AI Insights:
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/feffc434-8d9b-4200-99fb-efb60b19b19a" />
-
-
-
-
 ## Tech Stack
 
 **Frontend:** HTML, CSS, JavaScript, Chart.js
@@ -53,6 +40,24 @@ AI Insights:
 **Deployment:** GitHub, Render
 
 ---
+## Application Preview
+
+### Login & Registration
+<img width="1920" height="970" alt="Screenshot 2026-08-20 013639" src="https://github.com/user-attachments/assets/17a8bfb5-612b-47d2-9674-e341d0bd6e3e" />
+
+### Dashboard
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/70773144-3ca5-4b51-9e1d-001e63aabfc4" />
+
+### Expense Analytics
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5b7de8e6-00f5-4c13-838b-abbb5e295ed4" />
+
+### AI Insights
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/feffc434-8d9b-4200-99fb-efb60b19b19a" />
+
+
+
+
+
 
 ## Deployment
 
