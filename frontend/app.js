@@ -4,10 +4,10 @@
 // ======================================
 
 const API_URL =
-  'http://localhost:5000/api/transactions';
+  'https://trackwise-ai-expense-tracker-fullstack-1.onrender.com/api/transactions';
 
 const AUTH_URL =
-  'http://localhost:5000/api/auth';
+  'https://trackwise-ai-expense-tracker-fullstack-1.onrender.com/api/auth';
 
 let expenseChart = null;
 let allTransactions = [];
