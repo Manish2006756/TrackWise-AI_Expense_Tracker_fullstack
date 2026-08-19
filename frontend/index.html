@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="TrackWise - AI-powered expense tracking application"
+  >
+
+  <title>TrackWise | AI Expense Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+  <!-- ======================================
+       Authentication Screen
+  ======================================= -->
+
+  <div
+    id="authScreen"
+    class="auth-screen"
+  >
+
+    <div class="auth-card">
+
+      <div class="auth-brand">
+
+        <div class="auth-logo">
+          💰
+        </div>
+
+        <h1>TrackWise</h1>
+
+      </div>
+
+      <p class="auth-subtitle">
+        AI-Powered Expense Tracker
+      </p>
+
+
+      <!-- Login -->
+
+      <div id="loginForm">
+
+        <h2>Welcome Back</h2>
+
+        <p class="auth-description">
+          Login to manage your expenses.
+        </p>
+
+
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Email"
+          autocomplete="email"
+        >
+
+
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Password"
+          autocomplete="current-password"
+        >
+
+
+        <button id="loginBtn">
+          Login
+        </button>
+
+
+        <p
+          id="loginMessage"
+          class="auth-message"
+        ></p>
+
+
+        <p class="auth-switch">
+
+          Don't have an account?
+
+          <button
+            type="button"
+            id="showRegister"
+            class="link-btn"
+          >
+            Create Account
+          </button>
+
+        </p>
+
+      </div>
+
+
+      <!-- Register -->
+
+      <div
+        id="registerForm"
+        class="hidden"
+      >
+
+        <h2>Create Account</h2>
+
+        <p class="auth-description">
+          Start tracking your expenses.
+        </p>
+
+
+        <input
+          type="text"
+          id="registerName"
+          placeholder="Name"
+          autocomplete="name"
+        >
+
+
+        <input
+          type="email"
+          id="registerEmail"
+          placeholder="Email"
+          autocomplete="email"
+        >
+
+
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Password"
+          autocomplete="new-password"
+        >
+
+
+        <button id="registerBtn">
+          Create Account
+        </button>
+
+
+        <p
+          id="registerMessage"
+          class="auth-message"
+        ></p>
+
+
+        <p class="auth-switch">
+
+          Already have an account?
+
+          <button
+            type="button"
+            id="showLogin"
+            class="link-btn"
+          >
+            Login
+          </button>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ======================================
+       Main Application
+  ======================================= -->
+
+  <div
+    class="app-wrapper hidden"
+    id="app"
+  >
+
+    <!-- Header -->
+
+    <header class="app-header">
+
+      <div class="brand-area">
+
+        <div class="brand-icon">
+          💰
+        </div>
+
+        <div>
+
+          <h1>TrackWise</h1>
+
+          <p class="subtitle">
+            AI-Powered Full-Stack Expense Tracker
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="user-area">
+
+        <div class="user-info">
+
+          <span class="user-avatar">
+            👤
+          </span>
+
+          <div>
+
+            <span class="user-label">
+              Welcome back
+            </span>
+
+            <span id="welcomeUser"></span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="logoutBtn"
+          class="logout-btn"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <main class="dashboard-grid">
+
+
+      <!-- ======================================
+           Statistics
+      ======================================= -->
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+            💰
+          </div>
+
+          <div>
+
+            <p class="stat-label">
+              Total Spent
+            </p>
+
+            <h3 id="totalSpent">
+              $0.00
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+            📊
+          </div>
+
+          <div>
+
+            <p class="stat-label">
+              Transactions
+            </p>
+
+            <h3 id="transactionCount">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+            💳
+          </div>
+
+          <div>
+
+            <p class="stat-label">
+              Average Expense
+            </p>
+
+            <h3 id="averageExpense">
+              $0.00
+            </h3>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================
+           Add Transaction
+      ======================================= -->
+
+      <section
+        class="card form-card"
+        aria-labelledby="add-transaction-title"
+      >
+
+        <h2 id="add-transaction-title">
+          Add Transaction
+        </h2>
+
+        <p class="section-subtitle">
+          Let AI automatically categorize your expense.
+        </p>
+
+
+        <form id="txForm">
+
+          <div class="form-group">
+
+            <label for="desc">
+              Description
+            </label>
+
+            <input
+              type="text"
+              id="desc"
+              name="description"
+              placeholder="e.g., Subway lunch, Metro pass"
+              autocomplete="off"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="amount">
+              Amount ($)
+            </label>
+
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              step="0.01"
+              min="0"
+              placeholder="0.00"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            id="submitBtn"
+          >
+            ✨ Log with AI Auto-Tag
+          </button>
+
+
+          <p
+            id="statusMessage"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+        </form>
+
+      </section>
+
+
+      <!-- ======================================
+           Spending Chart
+      ======================================= -->
+
+      <section class="card chart-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <h2>
+              Spending Breakdown
+            </h2>
+
+            <p class="section-subtitle">
+              Your spending by category
+            </p>
+
+          </div>
+
+          <span class="period-badge">
+            All Time
+          </span>
+
+        </div>
+
+
+        <div class="chart-container">
+
+          <canvas id="expenseChart"></canvas>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================
+           Recent Transactions
+      ======================================= -->
+
+      <section class="card list-card">
+
+        <div class="list-header">
+
+          <div>
+
+            <h2>
+              Recent Transactions
+            </h2>
+
+            <p class="list-subtitle">
+              Search and filter your expenses
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="filters">
+
+          <div class="search-box">
+
+            <span>🔍</span>
+
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search transactions..."
+            >
+
+          </div>
+
+
+          <select id="categoryFilter">
+
+            <option value="All">
+              All Categories
+            </option>
+
+            <option value="Food">
+              Food
+            </option>
+
+            <option value="Transport">
+              Transport
+            </option>
+
+            <option value="Entertainment">
+              Entertainment
+            </option>
+
+            <option value="Utilities">
+              Utilities
+            </option>
+
+            <option value="Shopping">
+              Shopping
+            </option>
+
+            <option value="Education">
+              Education
+            </option>
+
+            <option value="Others">
+              Others
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <ul
+          id="txList"
+          class="tx-list"
+        ></ul>
+
+      </section>
+
+
+      <!-- ======================================
+           Monthly Summary
+      ======================================= -->
+
+      <section class="card summary-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <h2>
+              Monthly Summary
+            </h2>
+
+            <p class="section-subtitle">
+              Spending this month
+            </p>
+
+          </div>
+
+          <span class="period-badge">
+            This Month
+          </span>
+
+        </div>
+
+
+        <div class="monthly-total">
+
+          <span>
+            Total This Month
+          </span>
+
+          <strong id="monthlyTotal">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div
+          id="categorySummary"
+          class="category-summary"
+        ></div>
+
+      </section>
+
+
+      <!-- ======================================
+           AI Insights
+      ======================================= -->
+
+      <section class="card ai-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <h2>
+              🤖 AI Spending Insight
+            </h2>
+
+            <p class="section-subtitle">
+              Personalized analysis of your spending
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="ai-insight-box">
+
+          <p id="aiInsight">
+            Click the button to analyze your spending.
+          </p>
+
+        </div>
+
+
+        <button
+          id="insightBtn"
+          class="insight-btn"
+        >
+          ✨ Get AI Insight
+        </button>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
